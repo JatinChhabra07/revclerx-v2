@@ -1,44 +1,46 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 type Props = {
   children: React.ReactNode
   className?: string
-  as?: keyof JSX.IntrinsicElements
   delay?: number
+  y?: number
+  blur?: boolean
+  once?: boolean
 }
 
-export default function Reveal({ children, className = '', as = 'div', delay = 0 }: Props) {
-  const ref = useRef<HTMLElement | null>(null)
-  const [shown, setShown] = useState(false)
+export default function Reveal({
+  children,
+  className = '',
+  delay = 0,
+  y = 24,
+  blur = false,
+  once = true,
+}: Props) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once, margin: '-80px 0px' })
 
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => setShown(true), delay)
-            obs.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
-    )
-    obs.observe(node)
-    return () => obs.disconnect()
-  }, [delay])
-
-  const Tag = as as keyof JSX.IntrinsicElements
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (
-    <Tag
-      ref={ref as any}
-      className={`fade-up ${shown ? 'in' : ''} ${className}`}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y, filter: blur ? 'blur(8px)' : 'blur(0px)' }}
+      animate={
+        inView
+          ? { opacity: 1, y: 0, filter: 'blur(0px)' }
+          : { opacity: 0, y, filter: blur ? 'blur(8px)' : 'blur(0px)' }
+      }
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={cn(className)}
     >
       {children}
-    </Tag>
+    </motion.div>
   )
 }

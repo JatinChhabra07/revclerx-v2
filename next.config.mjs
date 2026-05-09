@@ -9,7 +9,12 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   images: {
-    formats: ['image/avif', 'image/webp']
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'plus.unsplash.com' },
+      { protocol: 'https', hostname: 'cdn.simpleicons.org' }
+    ]
   }
 }
 

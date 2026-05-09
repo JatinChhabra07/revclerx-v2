@@ -2,67 +2,53 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import PageShell from '@/components/PageShell'
 import Reveal from '@/components/Reveal'
+import { ArrowRight, Mail, MapPin, Phone, ShieldCheck, CheckCircle2, Sparkles } from 'lucide-react'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
+import { SectionEyebrow } from '@/components/ui/section-eyebrow'
 
-const faqItems = [
+const FAQ = [
   {
     question: 'How long does a typical engagement take?',
     answer:
-      'Most engagements run between 4 and 16 weeks end to end. A focused proof of concept lands in 4 weeks, a full production deployment in 10 to 12, and an ongoing managed program runs quarter by quarter after that.'
+      'Most engagements run between 4 and 16 weeks end to end. A focused proof of concept lands in 4 weeks, a full production deployment in 10 to 12, and an ongoing managed program runs quarter by quarter after that.',
   },
   {
     question: 'Do you work with our existing data team or replace it?',
     answer:
-      'We work with you, never around you. Our model is to embed alongside your existing data, ML, and engineering teams, transfer knowledge throughout the engagement, and leave your team strictly more capable than we found them.'
+      'We work with you, never around you. Our model is to embed alongside your existing data, ML, and engineering teams, transfer knowledge throughout the engagement, and leave your team strictly more capable than we found them.',
   },
   {
     question: 'What does the AI Readiness Sprint cover?',
     answer:
-      'The two week sprint maps your data landscape, prioritizes use cases against expected ROI, evaluates risk and compliance posture, and outputs a 90 day execution plan with budget and staffing. You walk away with a credible roadmap whether or not you continue with us.'
+      'The two-week sprint maps your data landscape, prioritizes use cases against expected ROI, evaluates risk and compliance posture, and outputs a 90-day execution plan with budget and staffing.',
   },
   {
     question: 'Can you deploy on premise or air gapped?',
     answer:
-      'Yes. We have shipped into VPC, on premise, and fully air gapped environments. We support open weight model deployment, private inference endpoints, and a model agnostic architecture so you stay in control of where data lives.'
+      'Yes. We have shipped into VPC, on premise, and fully air gapped environments. We support open-weight model deployment, private inference endpoints, and a model-agnostic architecture.',
   },
   {
     question: 'How do you handle data security and compliance?',
     answer:
-      'Security is treated as a first class engineering deliverable, not an afterthought. We follow SOC 2 Type II controls, support GDPR and HIPAA workloads, ship with audit logging by default, and run threat modeling and red team exercises before any model touches production data.'
-  }
+      'Security is treated as a first-class engineering deliverable, not an afterthought. We follow SOC 2 Type II controls, support GDPR and HIPAA workloads, and ship with audit logging by default.',
+  },
 ]
 
-const trustItems = [
-  'SOC 2 ready',
-  'GDPR aligned',
-  'HIPAA experienced',
-  'ISO 27001 in process'
-]
+const TRUST = ['SOC 2 ready', 'GDPR aligned', 'HIPAA experienced', 'ISO 27001 in process']
 
-const expectSteps = [
-  {
-    title: 'Discovery call',
-    body: 'A 30 minute conversation to understand your goal, your stack, and your constraints.'
-  },
-  {
-    title: 'Scoping workshop',
-    body: 'A working session with your team to align on outcomes, success metrics, and risks.'
-  },
-  {
-    title: 'Written proposal',
-    body: 'Plan, milestones, team, fixed fee budget, and an explicit definition of done.'
-  },
-  {
-    title: 'Kickoff',
-    body: 'Within one week of signoff, we are in your sprint board and shipping.'
-  }
+const EXPECT = [
+  { title: 'Discovery call', body: 'A 30-minute conversation to understand your goal, your stack, and your constraints.' },
+  { title: 'Scoping workshop', body: 'A working session with your team to align on outcomes, success metrics, and risks.' },
+  { title: 'Written proposal', body: 'Plan, milestones, team, fixed-fee budget, and an explicit definition of done.' },
+  { title: 'Kickoff', body: 'Within one week of signoff, we are in your sprint board and shipping.' },
 ]
 
 const inputClasses =
-  'bg-white border border-[#e5e2db] text-[#0a0a0a] placeholder-[#6b6457] focus:border-[#1f4d3a] focus:ring-2 focus:ring-[#1f4d3a]/20 focus:outline-none rounded-lg px-4 py-3 w-full'
+  'bg-white border border-line text-ink-900 placeholder-muted focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none rounded-xl px-4 py-3 w-full text-sm transition'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -76,237 +62,291 @@ export default function ContactPage() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="bg-[#faf6ef]">
-        <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 md:pt-32 md:pb-20">
+      <section className="relative overflow-hidden">
+        <div aria-hidden="true" className="bg-radial-soft" />
+        <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-12 md:pt-28 md:pb-16">
           <Reveal>
-            <span className="inline-flex items-center rounded-full border border-[#e5e2db] bg-white px-3 py-1 text-xs uppercase tracking-[0.25em] text-[#6b6457]">
+            <span className="badge-glass">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               Book a call
             </span>
-            <h1 className="mt-6 text-5xl md:text-7xl font-bold tracking-tight text-[#0a0a0a] text-balance leading-[1.05]">
-              <VerticalCutReveal>
-                {'Begin your AI transformation.'}
-              </VerticalCutReveal>
-            </h1>
-            <p className="mt-7 max-w-3xl text-lg md:text-xl text-[#2a2a2a] leading-relaxed">
-              Whether you are scoping your first deployment or reworking a stalled program, we will help you find the highest leverage move and chart a credible path to production.
+          </Reveal>
+          <h1 className="mt-7 text-5xl md:text-7xl font-semibold tracking-tight text-ink-900 text-balance leading-[1.04] max-w-4xl">
+            <VerticalCutReveal>Begin your AI transformation.</VerticalCutReveal>
+          </h1>
+          <Reveal delay={0.4}>
+            <p className="mt-7 max-w-2xl text-lg md:text-xl text-body leading-relaxed">
+              Whether you are scoping your first deployment or reworking a stalled program, we will help you find the highest-leverage move and chart a credible path to production.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* TWO COLUMN: FORM + INFO */}
-      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-10">
-
-            {/* LEFT: FORM */}
-            <Reveal>
-              <div className="bg-white border border-[#e5e2db] rounded-2xl p-8">
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#0a0a0a]">
-                  Tell us what you are exploring.
-                </h2>
-                <p className="mt-3 text-[#2a2a2a]">
-                  A few quick fields and we will route you to the right specialist.
-                </p>
-
-                <form id="contactForm" onSubmit={onSubmit} className="mt-8 space-y-5" noValidate>
+      {/* FORM + INFO */}
+      <section className="pb-20 md:pb-28">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-10">
+            {/* LEFT — FORM */}
+            <Reveal className="lg:col-span-7">
+              <div className="relative bg-white border border-line rounded-3xl p-7 md:p-10 shadow-[0_30px_80px_-30px_rgba(10,10,10,0.18)]">
+                <div className="flex items-start justify-between gap-4 mb-7">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-[#2a2a2a] mb-2">
-                      Full name <span className="text-[#1f4d3a]">*</span>
-                    </label>
-                    <input id="name" name="name" type="text" required placeholder="Jane Doe" className={inputClasses} />
+                    <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-ink-900">
+                      Tell us what you are exploring.
+                    </h2>
+                    <p className="mt-2 text-sm text-body">
+                      A few quick fields and we will route you to the right specialist.
+                    </p>
+                  </div>
+                  <span className="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-accent-soft border border-accent/20 flex-none">
+                    <Sparkles className="w-4 h-4 text-accent" />
+                  </span>
+                </div>
+
+                <form onSubmit={onSubmit} className="space-y-5" noValidate>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="firstName" className="block text-xs font-semibold text-ink-900 mb-2">
+                        First name <span className="text-accent">*</span>
+                      </label>
+                      <input id="firstName" name="firstName" type="text" required placeholder="Jane" className={inputClasses} />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-xs font-semibold text-ink-900 mb-2">
+                        Last name <span className="text-accent">*</span>
+                      </label>
+                      <input id="lastName" name="lastName" type="text" required placeholder="Doe" className={inputClasses} />
+                    </div>
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-[#2a2a2a] mb-2">
-                      Work email <span className="text-[#1f4d3a]">*</span>
+                    <label htmlFor="email" className="block text-xs font-semibold text-ink-900 mb-2">
+                      Work email <span className="text-accent">*</span>
                     </label>
                     <input id="email" name="email" type="email" required placeholder="jane@company.com" className={inputClasses} />
                   </div>
 
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-[#2a2a2a] mb-2">
-                      Company <span className="text-[#1f4d3a]">*</span>
-                    </label>
-                    <input id="company" name="company" type="text" required placeholder="Acme Corp" className={inputClasses} />
-                  </div>
-
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="role" className="block text-sm font-medium text-[#2a2a2a] mb-2">Role</label>
-                      <select id="role" name="role" className={inputClasses}>
-                        <option value="">Select your role</option>
-                        <option value="CEO">CEO</option>
-                        <option value="CTO">CTO</option>
-                        <option value="CIO">CIO</option>
-                        <option value="VP Engineering">VP Engineering</option>
-                        <option value="Head of Data">Head of Data</option>
-                        <option value="Other">Other</option>
-                      </select>
+                      <label htmlFor="company" className="block text-xs font-semibold text-ink-900 mb-2">
+                        Company name <span className="text-accent">*</span>
+                      </label>
+                      <input id="company" name="company" type="text" required placeholder="Acme Corp" className={inputClasses} />
                     </div>
                     <div>
-                      <label htmlFor="size" className="block text-sm font-medium text-[#2a2a2a] mb-2">Company size</label>
+                      <label htmlFor="size" className="block text-xs font-semibold text-ink-900 mb-2">
+                        Company size
+                      </label>
                       <select id="size" name="size" className={inputClasses}>
-                        <option value="">Select company size</option>
-                        <option value="1-50">1 to 50</option>
-                        <option value="51-250">51 to 250</option>
-                        <option value="251-1000">251 to 1000</option>
-                        <option value="1000+">1000 plus</option>
-                        <option value="Public">Public</option>
+                        <option value="">Select size</option>
+                        <option value="50-250">50 to 250</option>
+                        <option value="251-1000">251 to 1,000</option>
+                        <option value="1001-5000">1,001 to 5,000</option>
+                        <option value="5000+">5,000+</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-[#2a2a2a] mb-2">
+                    <label htmlFor="role" className="block text-xs font-semibold text-ink-900 mb-2">
+                      Your role
+                    </label>
+                    <select id="role" name="role" className={inputClasses}>
+                      <option value="">Select your role</option>
+                      <option value="CEO">CEO</option>
+                      <option value="CTO">CTO</option>
+                      <option value="CIO">CIO</option>
+                      <option value="VP Engineering">VP Engineering</option>
+                      <option value="Head of Data">Head of Data</option>
+                      <option value="Head of Operations">Head of Operations</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-semibold text-ink-900 mb-2">
                       What are you exploring?
                     </label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={5}
+                      rows={4}
                       placeholder="Tell us about the workflow, metric, or problem you are looking to move."
                       className={inputClasses}
                     />
                   </div>
 
-                  <div>
-                    <button
-                      type="submit"
-                      className="inline-flex items-center justify-center rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition"
-                    >
+                  <div className="pt-2">
+                    <button type="submit" className="btn-accent w-full sm:w-auto justify-center">
                       Schedule strategy call
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
 
-                  <p className="text-xs text-[#6b6457] leading-relaxed">
-                    We respond within 1 business day. All conversations are NDA ready on request.
+                  <p className="text-xs text-muted leading-relaxed flex items-start gap-2">
+                    <ShieldCheck className="w-3.5 h-3.5 text-accent mt-0.5 flex-none" />
+                    We respond within 1 business day. All conversations are NDA-ready on request.
                   </p>
 
                   {submitted && (
-                    <p
+                    <div
                       role="status"
                       aria-live="polite"
-                      className="rounded-lg border border-[#1f4d3a]/30 bg-[#1f4d3a]/5 px-4 py-3 text-sm text-[#1f4d3a]"
+                      className="rounded-2xl border border-accent/30 bg-accent-soft px-5 py-4 text-sm text-accent flex items-start gap-3"
                     >
-                      Thanks. A senior consultant will reach out within one business day.
-                    </p>
+                      <CheckCircle2 className="w-5 h-5 flex-none mt-0.5" />
+                      <div>
+                        <p className="font-semibold">You&apos;re on the list.</p>
+                        <p className="mt-0.5 text-accent/85">A senior consultant will reach out within one business day.</p>
+                      </div>
+                    </div>
                   )}
                 </form>
               </div>
             </Reveal>
 
-            {/* RIGHT: INFO */}
-            <Reveal>
-              <div className="space-y-10">
-
-                {/* Get in touch */}
-                <div>
-                  <h3 className="text-sm uppercase tracking-[0.25em] text-[#6b6457]">Get in touch</h3>
-                  <div className="mt-5 space-y-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-[#6b6457]">Email</p>
-                      <a href="mailto:hello@revclerx.ai" className="mt-1 inline-block text-base font-semibold text-[#0a0a0a] hover:text-[#1f4d3a] transition">
-                        hello@revclerx.ai
-                      </a>
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-widest text-[#6b6457]">Phone</p>
-                      <a href="tel:+14155550142" className="mt-1 inline-block text-base font-semibold text-[#0a0a0a] hover:text-[#1f4d3a] transition">
-                        +1 (415) 555 0142
-                      </a>
-                    </div>
+            {/* RIGHT — INFO PANEL */}
+            <Reveal className="lg:col-span-5" delay={0.15}>
+              <div className="space-y-8">
+                {/* Visual */}
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden img-frame">
+                  <Image
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
+                    alt="Strategy session in progress"
+                    fill
+                    sizes="(min-width: 1024px) 480px, 100vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/30 to-transparent" />
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                    <p className="text-cream text-lg font-semibold leading-tight max-w-xs">
+                      &ldquo;Thirty minutes to know if RevClerx is the right partner for your moment.&rdquo;
+                    </p>
                   </div>
                 </div>
 
-                {/* What to expect */}
-                <div>
-                  <h3 className="text-sm uppercase tracking-[0.25em] text-[#6b6457]">What to expect</h3>
+                {/* Get in touch */}
+                <div className="bg-white border border-line rounded-3xl p-7">
+                  <h3 className="text-xs uppercase tracking-[0.25em] text-muted">Get in touch</h3>
                   <ul className="mt-5 space-y-4">
-                    {expectSteps.map((step, i) => (
-                      <li key={step.title} className="flex items-start gap-4">
-                        <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1f4d3a] text-xs font-semibold text-[#faf6ef]">
-                          {i + 1}
-                        </span>
-                        <div>
-                          <p className="font-semibold text-[#0a0a0a]">{step.title}</p>
-                          <p className="mt-1 text-sm text-[#2a2a2a] leading-relaxed">{step.body}</p>
-                        </div>
-                      </li>
-                    ))}
+                    <li className="flex items-start gap-3">
+                      <span className="inline-flex w-9 h-9 rounded-xl bg-accent-soft border border-accent/20 items-center justify-center flex-none">
+                        <Mail className="w-4 h-4 text-accent" />
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-muted">Email</p>
+                        <a href="mailto:hello@revclerx.ai" className="text-sm font-semibold text-ink-900 hover:text-accent transition">
+                          hello@revclerx.ai
+                        </a>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="inline-flex w-9 h-9 rounded-xl bg-accent-soft border border-accent/20 items-center justify-center flex-none">
+                        <Phone className="w-4 h-4 text-accent" />
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-muted">Phone</p>
+                        <a href="tel:+14155550142" className="text-sm font-semibold text-ink-900 hover:text-accent transition">
+                          +1 (415) 555-0142
+                        </a>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="inline-flex w-9 h-9 rounded-xl bg-accent-soft border border-accent/20 items-center justify-center flex-none">
+                        <MapPin className="w-4 h-4 text-accent" />
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-widest text-muted">Office</p>
+                        <p className="text-sm font-semibold text-ink-900">San Francisco, CA</p>
+                      </div>
+                    </li>
                   </ul>
                 </div>
 
-                {/* Press / Partnerships / Careers */}
-                <div>
-                  <h3 className="text-sm uppercase tracking-[0.25em] text-[#6b6457]">
-                    For press, partnerships, careers
-                  </h3>
-                  <div className="mt-5 flex flex-col gap-2">
-                    <a href="mailto:press@revclerx.ai" className="text-sm text-[#0a0a0a] hover:text-[#1f4d3a] transition">
-                      <span className="font-semibold">Press</span>
-                      <span className="text-[#6b6457]"> press@revclerx.ai</span>
-                    </a>
-                    <a href="mailto:partners@revclerx.ai" className="text-sm text-[#0a0a0a] hover:text-[#1f4d3a] transition">
-                      <span className="font-semibold">Partnerships</span>
-                      <span className="text-[#6b6457]"> partners@revclerx.ai</span>
-                    </a>
-                    <a href="mailto:careers@revclerx.ai" className="text-sm text-[#0a0a0a] hover:text-[#1f4d3a] transition">
-                      <span className="font-semibold">Careers</span>
-                      <span className="text-[#6b6457]"> careers@revclerx.ai</span>
-                    </a>
-                  </div>
+                {/* What to expect */}
+                <div className="bg-cream-200 border border-line rounded-3xl p-7">
+                  <h3 className="text-xs uppercase tracking-[0.25em] text-muted">What to expect</h3>
+                  <ol className="mt-5 space-y-4">
+                    {EXPECT.map((s, i) => (
+                      <li key={s.title} className="flex items-start gap-4">
+                        <span className="flex-none inline-flex w-7 h-7 items-center justify-center rounded-full bg-accent text-cream text-xs font-bold">
+                          {i + 1}
+                        </span>
+                        <div>
+                          <p className="text-sm font-semibold text-ink-900">{s.title}</p>
+                          <p className="mt-0.5 text-xs text-body leading-relaxed">{s.body}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
 
+                {/* Specialty mailers */}
+                <div>
+                  <h3 className="text-xs uppercase tracking-[0.25em] text-muted">Press, partnerships, careers</h3>
+                  <div className="mt-4 space-y-1.5">
+                    {[
+                      ['Press', 'press@revclerx.ai'],
+                      ['Partnerships', 'partners@revclerx.ai'],
+                      ['Careers', 'careers@revclerx.ai'],
+                    ].map(([k, v]) => (
+                      <a
+                        key={v}
+                        href={`mailto:${v}`}
+                        className="block text-sm text-ink-900 hover:text-accent transition"
+                      >
+                        <span className="font-semibold">{k}</span>
+                        <span className="text-muted"> · {v}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
-        <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
-          <Reveal className="text-center max-w-2xl mx-auto">
-            <span className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">FAQ</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-[#0a0a0a] text-balance">
-              Frequently asked.
-            </h2>
-            <p className="mt-5 text-lg text-[#2a2a2a] leading-relaxed">
-              Quick answers to the questions we hear most often on first calls.
-            </p>
-          </Reveal>
-          <div className="mt-12">
-            <FAQAccordion items={faqItems} />
-          </div>
-        </div>
-      </section>
-
       {/* TRUST STRIP */}
-      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
-        <div className="max-w-7xl mx-auto px-6 py-14">
+      <section className="bg-cream-200 border-y border-line py-16">
+        <div className="max-w-7xl mx-auto px-6">
           <Reveal>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {trustItems.map((label) => (
+            <p className="text-center text-xs uppercase tracking-[0.3em] text-muted mb-6">
+              Built for regulated enterprises
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {TRUST.map((label) => (
                 <span
                   key={label}
-                  className="inline-flex items-center rounded-full border border-[#e5e2db] bg-white px-4 py-2 text-sm text-[#2a2a2a]"
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-5 py-2.5 text-sm font-medium text-ink-900"
                 >
+                  <ShieldCheck className="w-3.5 h-3.5 text-accent" />
                   {label}
                 </span>
               ))}
             </div>
-            <p className="mt-6 text-center text-xs uppercase tracking-[0.25em] text-[#6b6457]">
-              Built for regulated enterprises
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 md:py-32">
+        <div className="max-w-4xl mx-auto px-6">
+          <Reveal className="text-center mb-12">
+            <SectionEyebrow className="justify-center">FAQ</SectionEyebrow>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-ink-900 text-balance">
+              Frequently asked.
+            </h2>
+            <p className="mt-5 text-base md:text-lg text-body leading-relaxed">
+              Quick answers to the questions we hear most often on first calls.
             </p>
-            <div className="mt-8 text-center">
-              <Link
-                href="/solutions"
-                className="inline-flex items-center rounded-full border border-[#0a0a0a] px-6 py-2.5 text-sm font-semibold text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#faf6ef] transition"
-              >
-                Explore solutions
-              </Link>
-            </div>
+          </Reveal>
+          <FAQAccordion items={FAQ} defaultOpen={0} />
+          <Reveal className="mt-12 text-center">
+            <Link href="/solutions" className="btn-secondary">
+              Explore solutions
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </Reveal>
         </div>
       </section>
