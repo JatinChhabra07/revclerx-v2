@@ -1,151 +1,252 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
 import PageShell from '@/components/PageShell'
 import Reveal from '@/components/Reveal'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
+import { FAQAccordion } from '@/components/ui/faq-accordion'
 
 export const metadata: Metadata = {
-  title: 'Solutions',
+  title: 'Solutions | RevClerx engagement models',
   description:
-    'Three ways RevClerx works with enterprise teams: readiness assessment, continuous transformation, and production deployment.'
+    'Three ways to engage with RevClerx: a four week AI readiness assessment, a continuous transformation partnership, and full enterprise deployment with forward deployed engineers.',
 }
 
-const solutions = [
+const faqItems = [
   {
-    id: 'assessment',
-    eyebrow: 'Solution 01',
-    title: 'AI Readiness Assessment',
-    summary:
-      'A short, intensive study of where your business actually meets AI. You leave with a sequenced roadmap and a clear answer to the question every leadership team is quietly asking.',
-    bullets: [
-      'A senior partner is on the work from day one. No analysts, no offshore handoff.',
-      'We interview operators, engineers, and risk owners. The answers shape the plan.',
-      'A written report you can defend to a board, with named owners and honest costs.',
-      'Delivered in four weeks. If we do not see a path to value, we tell you.'
-    ]
+    question: 'Which engagement should we start with?',
+    answer:
+      'Most organizations begin with the readiness assessment. Four weeks is enough time to surface where AI creates real value, align stakeholders, and decide whether continuous or full deployment is the right next step.',
   },
   {
-    id: 'continuous',
-    eyebrow: 'Solution 02',
-    title: 'Continuous Transformation',
-    summary:
-      'An embedded senior team that runs the AI program with you. We pair with internal owners, ship in monthly cycles, and stay close to the metrics that pay the bills.',
-    bullets: [
-      'A small fixed pod of senior engineers, product, and operations.',
-      'Monthly delivery cadence with a written update and a working demo.',
-      'Co-built with your team so capability transfers cleanly when we leave.',
-      'A defined exit ramp. We are designed to make ourselves unnecessary.'
-    ]
+    question: 'Can we move from one engagement into another?',
+    answer:
+      'Yes. The assessment is designed to flow naturally into continuous transformation, and continuous engagements often expand into full deployments as priorities sharpen. Nothing about the model locks you in.',
   },
   {
-    id: 'deployment',
-    eyebrow: 'Solution 03',
-    title: 'Enterprise Deployment',
-    summary:
-      'Production builds for the AI systems that matter most. Evaluation, observability, security review, and a rollback plan. Built to live in a real company, not a demo deck.',
-    bullets: [
-      'Architecture reviewed against your security and compliance program.',
-      'Evaluation harness so you know when the system is improving and when it is not.',
-      'Observability and on-call runbook handed to your team on day one.',
-      'Cost and latency budgets set before code ships, and reviewed each cycle.'
-    ]
-  }
+    question: 'How are continuous engagements priced?',
+    answer:
+      'Continuous transformation runs on a fixed monthly retainer based on the scope of teams, models, and adoption work in flight. We agree on outcomes and review them on a quarterly cadence so the work stays honest.',
+  },
+  {
+    question: 'Who owns the work after a deployment ends?',
+    answer:
+      'Your team does. Forward deployed engineers document patterns, train your operators, and graduate ownership before they leave. We do not build dependency, we build capability that stays inside the company.',
+  },
 ]
+
+type SolutionBlockProps = {
+  id: string
+  step: string
+  eyebrow: string
+  title: string
+  description: string
+  bullets: string[]
+  ctaLabel: string
+  ctaHref: string
+  reverse?: boolean
+  surface: 'cream' | 'white'
+}
+
+function SolutionBlock({
+  id,
+  step,
+  eyebrow,
+  title,
+  description,
+  bullets,
+  ctaLabel,
+  ctaHref,
+  reverse = false,
+  surface,
+}: SolutionBlockProps) {
+  const bg = surface === 'cream' ? 'bg-[#faf6ef]' : 'bg-white'
+
+  return (
+    <section id={id} className={`${bg} border-t border-[#e5e2db]`}>
+      <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center ${
+            reverse ? 'md:[&>*:first-child]:order-2' : ''
+          }`}
+        >
+          <Reveal className="md:col-span-8">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">{eyebrow}</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.1]">
+              {title}
+            </h2>
+            <p className="mt-6 max-w-xl text-lg text-[#2a2a2a] leading-relaxed">{description}</p>
+            <ul className="mt-8 space-y-3">
+              {bullets.map((b) => (
+                <li key={b} className="flex items-start gap-3 text-[#2a2a2a]">
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#1f4d3a]"
+                  />
+                  <span className="leading-relaxed">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10">
+              <Link
+                href={ctaHref}
+                className="inline-flex items-center gap-2 rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition-colors"
+              >
+                {ctaLabel}
+                <span aria-hidden="true">{'→'}</span>
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal className="md:col-span-4">
+            <div className="flex md:justify-end">
+              <div className="relative">
+                <div className="flex h-48 w-48 md:h-56 md:w-56 items-center justify-center rounded-full bg-[#1f4d3a] text-[#faf6ef]">
+                  <span className="text-7xl md:text-8xl font-semibold tracking-tight">{step}</span>
+                </div>
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 rounded-full border border-[#0a0a0a]/10 translate-x-3 translate-y-3 -z-10"
+                />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function SolutionsPage() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="px-6 lg:px-8 pt-20 pb-16 md:pt-28 md:pb-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#faf6ef]">
+        <div className="max-w-6xl mx-auto px-6 pt-24 pb-24 md:pt-32 md:pb-28">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white border border-[#e5e2db] px-4 py-1.5 text-xs font-medium text-[#0a0a0a]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1f4d3a]"></span>
+            Three ways to engage
+          </div>
+          <h1 className="mt-7 text-5xl md:text-7xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.04]">
+            <VerticalCutReveal>Pick the engagement that fits where you are.</VerticalCutReveal>
+          </h1>
+          <p className="mt-7 max-w-2xl text-lg md:text-xl text-[#2a2a2a] leading-relaxed">
+            RevClerx scales with your moment. Start with a focused four week diagnostic, run a continuous transformation partnership, or bring in an embedded team that ships production AI alongside your operators.
+          </p>
+          <p className="mt-3 max-w-2xl text-lg md:text-xl text-[#2a2a2a] leading-relaxed">
+            The same senior bench works across all three. The shape of the engagement is the only thing that changes.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link
+              href="#assessment"
+              className="inline-flex items-center gap-2 rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition-colors"
+            >
+              Start with the assessment
+              <span aria-hidden="true">{'→'}</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-[#0a0a0a] bg-transparent px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#faf6ef] transition-colors"
+            >
+              Talk to a partner
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SOLUTION 1 */}
+      <SolutionBlock
+        id="assessment"
+        step="01"
+        eyebrow="One time engagement"
+        title="AI Readiness Assessment"
+        description="A focused four week diagnostic for leadership teams that need a defensible point of view on where AI fits, what it costs, and how it lands. We run interviews across the org, pressure test the math, and hand you a plan you can actually fund."
+        bullets={[
+          'Parallel mapping interviews across operations, technology, and the front line',
+          'Opportunity model with feasibility, business impact, and ROI projections',
+          'Prioritized 12 month roadmap sequenced by dependency and risk',
+          'Executive readout with the trade offs your board will ask about',
+        ]}
+        ctaLabel="Book the assessment"
+        ctaHref="/contact"
+        surface="white"
+      />
+
+      {/* SOLUTION 2 */}
+      <SolutionBlock
+        id="continuous"
+        step="02"
+        eyebrow="Ongoing partnership"
+        title="Continuous Transformation"
+        description="A monthly engagement for organizations that need a senior partner alongside the operating team as priorities shift. We hold the AI portfolio honest, keep adoption climbing, and make sure the next quarter is sharper than the last."
+        bullets={[
+          'Monthly upskilling and pattern sharing for product, ops, and engineering',
+          'Adoption tracking with leading indicators rather than vanity metrics',
+          'Model performance and risk monitoring across deployed systems',
+          'Quarterly executive briefings that keep the board on the same page',
+        ]}
+        ctaLabel="Talk to a partner"
+        ctaHref="/contact"
+        reverse
+        surface="cream"
+      />
+
+      {/* SOLUTION 3 */}
+      <SolutionBlock
+        id="deployment"
+        step="03"
+        eyebrow="Embedded delivery"
+        title="Enterprise Deployment"
+        description="Forward deployed engineers working inside your perimeter to ship the systems your roadmap depends on. We handle the build, the integrations, and the security review, then graduate the work to your team."
+        bullets={[
+          'Dedicated cross functional team scoped to your priority initiatives',
+          'Custom AI systems built against your data, your stack, and your policies',
+          'Deep integration with the tools your operators already use every day',
+          'Security, privacy, and compliance review baked into the delivery rhythm',
+        ]}
+        ctaLabel="Scope a deployment"
+        ctaHref="/contact"
+        surface="white"
+      />
+
+      {/* FAQ */}
+      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
+        <div className="max-w-3xl mx-auto px-6 py-24 md:py-32">
           <Reveal>
-            <p className="text-xs uppercase tracking-widest text-[#767069] font-semibold">
-              Solutions
+            <p className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">Common questions</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.1]">
+              Choosing between the three.
+            </h2>
+            <p className="mt-6 text-lg text-[#2a2a2a] leading-relaxed">
+              A short read for leaders trying to figure out where to begin and how the engagements fit together.
             </p>
           </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#1C1C1C] leading-[0.98] text-balance max-w-4xl">
-              Three ways to work with us.
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[#3a3a3a] leading-relaxed">
-              We package our work into three engagements. Each one is staffed with senior
-              practitioners and ships against the metrics your business already cares about.
-            </p>
+          <Reveal className="mt-12">
+            <FAQAccordion items={faqItems} />
           </Reveal>
         </div>
       </section>
 
-      {/* DEEP DIVE BLOCKS */}
-      {solutions.map((sol, i) => {
-        const reverse = i % 2 === 1
-        return (
-          <section
-            key={sol.id}
-            id={sol.id}
-            className="px-6 lg:px-8 py-24 md:py-32 border-t border-[#ebe6dd] scroll-mt-24"
-          >
-            <div className="mx-auto max-w-7xl grid gap-12 md:grid-cols-12 items-start">
-              <div className={`md:col-span-5 ${reverse ? 'md:order-2 md:col-start-8' : ''}`}>
-                <Reveal>
-                  <p className="text-xs uppercase tracking-widest text-[#ff5a1f] font-semibold">
-                    {sol.eyebrow}
-                  </p>
-                  <h2 className="mt-4 text-4xl md:text-5xl font-extrabold text-[#1C1C1C] leading-tight">
-                    {sol.title}
-                  </h2>
-                  <p className="mt-6 text-base md:text-lg text-[#3a3a3a] leading-relaxed">
-                    {sol.summary}
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="mt-8 inline-flex items-center justify-center rounded-full bg-[#1C1C1C] px-5 py-2.5 text-sm font-medium text-[#f9f7f3] hover:bg-black transition-colors"
-                  >
-                    Talk to a partner
-                  </Link>
-                </Reveal>
-              </div>
-
-              <div className={`md:col-span-6 ${reverse ? 'md:order-1 md:col-start-1' : 'md:col-start-7'}`}>
-                <Reveal delay={120}>
-                  <ul className="divide-y divide-[#ebe6dd] border-t border-b border-[#ebe6dd]">
-                    {sol.bullets.map((b, idx) => (
-                      <li key={idx} className="flex gap-4 py-5">
-                        <span className="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-[#1C1C1C] text-[#f9f7f3] text-[11px] font-mono">
-                          {String(idx + 1).padStart(2, '0')}
-                        </span>
-                        <p className="text-base leading-relaxed text-[#3a3a3a]">{b}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              </div>
-            </div>
-          </section>
-        )
-      })}
-
       {/* BOTTOM CTA */}
-      <section className="px-6 lg:px-8 py-24 md:py-32 border-t border-[#ebe6dd]">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="bg-white border-t border-[#e5e2db]">
+        <div className="max-w-3xl mx-auto px-6 py-24 md:py-32 text-center">
           <Reveal>
-            <h2 className="text-4xl md:text-6xl font-extrabold text-[#1C1C1C] leading-[0.98] text-balance">
-              Not sure which one fits.
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.1]">
+              Not sure which fits? Talk it through with us.
             </h2>
-            <p className="mt-6 text-base md:text-lg text-[#3a3a3a] max-w-2xl mx-auto leading-relaxed">
-              Send a short note about where your program is today. A senior partner reads
-              every inbound and will write back with an honest opinion.
+            <p className="mt-6 text-lg text-[#2a2a2a] leading-relaxed">
+              Thirty minutes with a partner is usually enough to decide where to start. No deck, no pitch, just a working conversation about your priorities.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap gap-3 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#1C1C1C] px-6 py-3 text-sm font-medium text-[#f9f7f3] hover:bg-black transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition-colors"
               >
-                Start a conversation
+                Book a strategy call
+                <span aria-hidden="true">{'→'}</span>
               </Link>
               <Link
                 href="/how-it-works"
-                className="inline-flex items-center justify-center rounded-full border border-[#d4cfc4] bg-white px-6 py-3 text-sm font-medium text-[#1C1C1C] hover:border-[#1C1C1C] transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-[#0a0a0a] bg-transparent px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#faf6ef] transition-colors"
               >
                 See how we work
               </Link>

@@ -1,32 +1,15 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 
-type Props = {
-  href?: string
-  size?: 'sm' | 'md' | 'lg'
-  className?: string
-}
+type Props = { href?: string; size?: 'sm' | 'md'; className?: string }
 
-const sizeMap: Record<NonNullable<Props['size']>, string> = {
-  sm: 'text-base',
-  md: 'text-lg',
-  lg: 'text-2xl'
-}
-
-export default function Brand({ href = '/', size = 'md', className }: Props) {
-  return (
-    <Link
-      href={href}
-      aria-label="RevClerx home"
-      className={cn(
-        'inline-flex items-baseline font-bold tracking-tight text-[#1C1C1C]',
-        sizeMap[size],
-        className
-      )}
-    >
-      <span>Rev</span>
-      <span>Clerx</span>
-      <span className="text-[#ff5a1f] text-[0.7em] ml-0.5 font-bold">.ai</span>
-    </Link>
+export default function Brand({ href = '/', size = 'md', className = '' }: Props) {
+  const txt = size === 'sm' ? 'text-lg' : 'text-xl'
+  const Inner = (
+    <span className={`inline-flex items-baseline ${className}`}>
+      <span className={`${txt} font-bold tracking-tight text-[#0a0a0a]`}>RevClerx</span>
+      <span className={`${txt} font-bold tracking-tight text-[#1f4d3a]`}>.ai</span>
+    </span>
   )
+  if (href) return <Link href={href} className="inline-flex items-baseline">{Inner}</Link>
+  return Inner
 }

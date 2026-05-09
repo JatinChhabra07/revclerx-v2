@@ -1,110 +1,85 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
 import PageShell from '@/components/PageShell'
 import Reveal from '@/components/Reveal'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 
 export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'RevClerx is a small senior team of engineers, product leaders, and operators building enterprise AI programs that survive contact with reality.'
+  title: 'About | RevClerx',
+  description: 'A senior team building AI systems that ship. We close the gap between strategy decks and production for data rich, regulated organizations.'
 }
 
 const principles = [
   {
-    title: 'Senior people on the work.',
-    body:
-      'The partner who scopes the engagement is the same partner who writes the code, runs the review, and signs off the deploy. No pyramid, no analyst layer, no hidden offshore team.'
+    n: '01',
+    title: 'Outcomes over output.',
+    body: 'A model in a notebook is not an outcome. We define the metric on day one and own it through to deployment.'
   },
   {
-    title: 'Direct accountability.',
-    body:
-      'One named owner on our side. One on yours. We agree on outcomes in writing, we report on them in writing, and we say so when we are off track.'
+    n: '02',
+    title: 'Security as default.',
+    body: 'Every architecture decision starts with your data residency and compliance posture. Not the model, not the demo.'
   },
   {
-    title: 'We tell you when not to build.',
-    body:
-      'Most of the value in early AI work is killing the wrong projects fast. We will say so plainly, and we will give you the reasoning in a form you can take to a board.'
+    n: '03',
+    title: 'Integration is the product.',
+    body: 'If it does not slot into your ERP, your CRM, or your data lake, it does not ship. Connectors are first class work.'
   },
   {
-    title: 'Built to leave.',
-    body:
-      'Every engagement has a defined exit ramp. We document, we transfer, we hand off cleanly. Your team is stronger after we go than before we arrived.'
+    n: '04',
+    title: 'Honest about limits.',
+    body: 'If AI is not the right answer, we will say so on day one. We have walked away from work that was not ready.'
   }
 ]
 
 export default function AboutPage() {
   return (
     <PageShell>
-      {/* HERO */}
-      <section className="px-6 lg:px-8 pt-20 pb-16 md:pt-28 md:pb-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#faf6ef]">
+        <div className="max-w-7xl mx-auto px-6 pt-24 pb-20 md:pt-32 md:pb-24">
+          <span className="inline-flex items-center rounded-full border border-[#e5e2db] bg-white px-3 py-1 text-xs uppercase tracking-[0.25em] text-[#6b6457]">
+            About RevClerx
+          </span>
+          <h1 className="mt-6 text-5xl md:text-7xl font-bold tracking-tight text-[#0a0a0a] text-balance leading-[1.05]">
+            <VerticalCutReveal>
+              {'A senior team for serious AI work.'}
+            </VerticalCutReveal>
+          </h1>
+          <p className="mt-7 max-w-3xl text-lg md:text-xl text-[#2a2a2a] leading-relaxed">
+            We are a small, senior team of AI engineers, data scientists, and former enterprise CIOs. We started RevClerx because too many AI programs were stalling between brilliant slideware and production reality, and our job is to close that gap.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-24 text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-widest text-[#767069] font-semibold">
-              About
+            <span className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">Mission</span>
+            <p className="mt-6 text-2xl md:text-3xl font-medium text-[#0a0a0a] leading-snug text-balance">
+              Make enterprise AI a P&amp;L line item, not a slide.
             </p>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#1C1C1C] leading-[0.98] text-balance max-w-4xl">
-              A small senior team for enterprise AI.
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[#3a3a3a] leading-relaxed">
-              RevClerx is a partnership of engineers, product leaders, and operators who
-              have spent careers shipping software inside large, regulated organizations. We
-              started this firm because the AI work that mattered most was not getting done.
+            <p className="mt-6 text-base md:text-lg text-[#2a2a2a] leading-relaxed">
+              Most AI programs do not fail because of the model. They fail on integration, governance, change management, and the absence of a roadmap that ties to revenue. We exist to fix all of that, in production, on your stack.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* MISSION */}
-      <section className="px-6 lg:px-8 py-24 md:py-28 border-t border-[#ebe6dd]">
-        <div className="mx-auto max-w-7xl grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <Reveal>
-              <p className="text-xs uppercase tracking-widest text-[#767069] font-semibold">
-                Mission
-              </p>
-              <h2 className="mt-4 text-3xl md:text-4xl font-extrabold text-[#1C1C1C] leading-tight">
-                We build AI programs that hold up after we leave the room.
-              </h2>
-            </Reveal>
-          </div>
-          <div className="md:col-span-7 md:col-start-6 text-base md:text-lg leading-relaxed text-[#3a3a3a]">
-            <Reveal delay={80}>
-              <p>
-                Our work is the unglamorous part. The data plumbing nobody volunteers for. The
-                evaluation harness that catches the regression before it hits a customer. The
-                quiet conversation with a head of risk that reshapes a roadmap. The version of
-                the system that ships and stays shipped. We do this work because it is what
-                makes everything else possible, and because too few firms are willing to.
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* PRINCIPLES */}
-      <section className="px-6 lg:px-8 py-24 md:py-32 border-t border-[#ebe6dd]">
-        <div className="mx-auto max-w-7xl">
-          <Reveal>
-            <p className="text-xs uppercase tracking-widest text-[#767069] font-semibold">
-              Principles
-            </p>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-[#1C1C1C] max-w-3xl leading-tight">
-              How we work, in four lines.
+      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
+        <div className="max-w-7xl mx-auto px-6 py-20 md:py-24">
+          <Reveal className="max-w-3xl">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">Principles</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-[#0a0a0a] text-balance">
+              Four things we will not compromise on.
             </h2>
           </Reveal>
-
-          <div className="mt-16 grid gap-y-12 gap-x-16 md:grid-cols-2">
-            {principles.map((p, i) => (
-              <Reveal key={p.title} delay={i * 80}>
-                <div className="border-t border-[#1C1C1C] pt-6">
-                  <h3 className="text-2xl font-extrabold text-[#1C1C1C] leading-tight">
-                    {p.title}
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-[#3a3a3a]">{p.body}</p>
+          <div className="mt-14 grid md:grid-cols-2 gap-x-12 gap-y-12">
+            {principles.map((p) => (
+              <Reveal key={p.n}>
+                <div className="border-l-2 border-[#1f4d3a] pl-5">
+                  <div className="font-mono text-xs text-[#1f4d3a] tracking-widest">{p.n}</div>
+                  <h3 className="mt-3 text-xl md:text-2xl font-semibold text-[#0a0a0a]">{p.title}</h3>
+                  <p className="mt-3 text-[#2a2a2a] leading-relaxed">{p.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -112,28 +87,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* BOTTOM CTA */}
-      <section className="px-6 lg:px-8 py-24 md:py-32 border-t border-[#ebe6dd]">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-24 text-center">
           <Reveal>
-            <h2 className="text-4xl md:text-6xl font-extrabold text-[#1C1C1C] leading-[0.98] text-balance">
-              If this sounds like the team you want.
-            </h2>
-            <p className="mt-6 text-base md:text-lg text-[#3a3a3a] max-w-2xl mx-auto leading-relaxed">
-              Send a short note. A senior partner reads every inbound and replies in person.
+            <span className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">The team</span>
+            <p className="mt-6 text-2xl md:text-3xl font-medium text-[#0a0a0a] leading-snug text-balance">
+              Senior team. Direct accountability.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <p className="mt-6 text-base md:text-lg text-[#2a2a2a] leading-relaxed">
+              Every engagement is led by a partner with at least a decade of enterprise delivery, paired with engineers who have shipped AI in regulated environments. No layered hand offs, no junior bench, no surprises. You work with the people doing the work.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
+        <div className="max-w-3xl mx-auto px-6 py-20 md:py-24 text-center">
+          <Reveal>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0a0a0a] text-balance">
+              Want to see how we work?
+            </h2>
+            <p className="mt-5 text-base md:text-lg text-[#2a2a2a] leading-relaxed">
+              Book a 30 minute call. We will walk you through a recent deployment in your industry and outline what your first four weeks with RevClerx would look like.
+            </p>
+            <div className="mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#1C1C1C] px-6 py-3 text-sm font-medium text-[#f9f7f3] hover:bg-black transition-colors"
+                className="inline-flex items-center rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition"
               >
-                Get in touch
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="inline-flex items-center justify-center rounded-full border border-[#d4cfc4] bg-white px-6 py-3 text-sm font-medium text-[#1C1C1C] hover:border-[#1C1C1C] transition-colors"
-              >
-                See the method
+                Book a strategy call
               </Link>
             </div>
           </Reveal>

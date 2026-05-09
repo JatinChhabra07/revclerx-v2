@@ -1,157 +1,189 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
 import PageShell from '@/components/PageShell'
 import Reveal from '@/components/Reveal'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 
 export const metadata: Metadata = {
-  title: 'How it works',
+  title: 'How it works | The RevClerx method',
   description:
-    'A four step method built for enterprise AI programs. Listen, map, roadmap, execute. Senior people on every step.'
+    'A four step method for enterprise AI transformation: listen across the organization, map how work flows, sequence a roadmap, and execute with forward deployed engineers.',
 }
 
-const steps = [
+type Step = {
+  num: string
+  title: string
+  description: string
+  deliverables: string[]
+}
+
+const steps: Step[] = [
   {
-    n: '01',
+    num: '01',
     title: 'Listen',
-    lead:
-      'Every engagement begins with a quiet week of conversations.',
-    body:
-      'We sit with the operators, engineers, and leaders who actually run the work. We watch how decisions move, where the friction is, and what the data is silently telling everyone. The brief is in the room. We just have to write it down.',
-    notes: [
-      'Discovery interviews with 8 to 15 stakeholders.',
-      'Walk-throughs of current workflows, in their tools.',
-      'A short written field report at the end of week one.'
-    ]
+    description:
+      'Senior consultants and dedicated AI agents run parallel interviews across the organization. We talk to operators on the front line, the engineers behind the systems, and the executives setting the bar. The goal is to understand how work actually flows, not how the org chart claims it does.',
+    deliverables: [
+      'Structured interviews across functions, regions, and seniority',
+      'AI assisted synthesis that captures every signal in the room',
+      'Stakeholder map with explicit champions and quiet skeptics',
+    ],
   },
   {
-    n: '02',
+    num: '02',
     title: 'Map',
-    lead:
-      'We translate the stories into a clear map of opportunity, risk, and dependency.',
-    body:
-      'Not every problem is an AI problem. We mark which ones are, which ones are simply broken process, and which ones depend on a piece of plumbing nobody has built yet. The map is sequenced so the first thing you do unblocks the next.',
-    notes: [
-      'Opportunity inventory with effort and value estimates.',
-      'Data and platform dependency graph.',
-      'Risk register, including the things that should not be automated.'
-    ]
+    description:
+      'We translate everything we heard into a granular operational map of your business. Every process, handoff, and decision point is on it. Where work moves smoothly, where it stalls, and where AI shifts the underlying math become visible in the same picture.',
+    deliverables: [
+      'Process level map of operations across business units',
+      'Friction inventory with quantified time and cost estimates',
+      'Capability assessment of data, tooling, and team readiness',
+    ],
   },
   {
-    n: '03',
+    num: '03',
     title: 'Roadmap',
-    lead:
-      'A short, defensible plan that names owners, costs, and the conditions for go and no go.',
-    body:
-      'A roadmap is only useful if you can take it to a board, a CFO, and a head of risk and have all three nod. We write it that way. Each initiative comes with a defined outcome, a budget, a kill criterion, and a single accountable owner.',
-    notes: [
-      'Sequenced 6 to 12 month plan with quarterly checkpoints.',
-      'Named owners on both sides of the table.',
-      'Explicit kill and scale criteria for each initiative.'
-    ]
+    description:
+      'We sequence the opportunity set into a prioritized transformation plan. Each initiative carries a feasibility read, a measurable business outcome, and a defensible cost line. The order is set by dependency and risk, not by enthusiasm.',
+    deliverables: [
+      'Twelve month roadmap with quarterly milestones and owners',
+      'ROI model grounded in your numbers, not industry averages',
+      'Risk register covering data, security, and change management',
+    ],
   },
   {
-    n: '04',
+    num: '04',
     title: 'Execute',
-    lead:
-      'Senior engineers ship. Weekly demos and a clean handoff path back to your team.',
-    body:
-      'Delivery is done by the same people who scoped the work. We ship in production-grade environments from day one, run live evaluation against the criteria we set, and document everything we build so it survives the engagement.',
-    notes: [
-      'Weekly working demo and a written status note.',
-      'Production deploys against your security and compliance program.',
-      'Documentation, runbooks, and a defined exit path.'
-    ]
-  }
+    description:
+      'Forward deployed engineers move inside your perimeter and ship the systems on the roadmap. Enablement runs alongside delivery so your operators learn the patterns as they land. We graduate ownership to your team before we leave.',
+    deliverables: [
+      'Production AI systems integrated with your stack and data',
+      'Hands on enablement so your team owns what we built',
+      'Adoption telemetry that proves the change is real and sticking',
+    ],
+  },
 ]
 
 export default function HowItWorksPage() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="px-6 lg:px-8 pt-20 pb-16 md:pt-28 md:pb-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="bg-[#faf6ef]">
+        <div className="max-w-6xl mx-auto px-6 pt-24 pb-24 md:pt-32 md:pb-28">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white border border-[#e5e2db] px-4 py-1.5 text-xs font-medium text-[#0a0a0a]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1f4d3a]"></span>
+            The method
+          </div>
+          <h1 className="mt-7 text-5xl md:text-7xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.04]">
+            <VerticalCutReveal>How transformation actually happens.</VerticalCutReveal>
+          </h1>
+          <p className="mt-7 max-w-2xl text-lg md:text-xl text-[#2a2a2a] leading-relaxed">
+            A four step method that pairs human judgment with AI scale. We listen across the organization, map how work moves, sequence the roadmap, and stay through execution until the change is real.
+          </p>
+          <p className="mt-3 max-w-2xl text-lg md:text-xl text-[#2a2a2a] leading-relaxed">
+            The work compounds because every step hands the next one a sharper picture.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition-colors"
+            >
+              Book a strategy call
+              <span aria-hidden="true">{'→'}</span>
+            </Link>
+            <Link
+              href="/solutions"
+              className="inline-flex items-center gap-2 rounded-full border border-[#0a0a0a] bg-transparent px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#faf6ef] transition-colors"
+            >
+              See engagement models
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* STEPS */}
+      {steps.map((step, idx) => {
+        const isCream = idx % 2 === 1
+        const bg = isCream ? 'bg-[#faf6ef]' : 'bg-white'
+        return (
+          <section key={step.num} className={`${bg} border-t border-[#e5e2db]`}>
+            <div className="max-w-5xl mx-auto px-6 py-24 md:py-32">
+              <Reveal>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+                  <div className="md:col-span-3">
+                    <span className="block text-7xl md:text-8xl font-semibold tracking-tight text-[#1f4d3a] leading-none">
+                      {step.num}
+                    </span>
+                    <p className="mt-4 text-xs uppercase tracking-[0.25em] text-[#6b6457]">
+                      Step {step.num}
+                    </p>
+                  </div>
+                  <div className="md:col-span-9">
+                    <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.1]">
+                      {step.title}
+                    </h2>
+                    <p className="mt-6 text-lg text-[#2a2a2a] leading-relaxed">
+                      {step.description}
+                    </p>
+                    <div className="mt-10 border-t border-[#e5e2db] pt-8">
+                      <p className="text-xs uppercase tracking-[0.25em] text-[#6b6457]">
+                        What we deliver
+                      </p>
+                      <ul className="mt-5 space-y-3">
+                        {step.deliverables.map((d) => (
+                          <li key={d} className="flex items-start gap-3 text-[#2a2a2a]">
+                            <span
+                              aria-hidden="true"
+                              className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[#1f4d3a]"
+                            />
+                            <span className="leading-relaxed">{d}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )
+      })}
+
+      {/* WHY THIS WORKS */}
+      <section className="bg-[#0a0a0a] border-t border-[#0a0a0a]">
+        <div className="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-widest text-[#767069] font-semibold">
-              How it works
-            </p>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mt-6 text-5xl md:text-7xl font-extrabold text-[#1C1C1C] leading-[0.98] text-balance max-w-4xl">
-              Four steps. Senior people on every one.
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[#3a3a3a] leading-relaxed">
-              Our method is short, repeatable, and designed to expose problems early. It is
-              the same shape we have used inside banks, insurers, and global retailers.
+            <p className="text-xs uppercase tracking-[0.25em] text-[#faf6ef]/60">Why this works</p>
+            <p className="mt-6 text-3xl md:text-4xl font-semibold tracking-tight text-[#faf6ef] text-balance leading-[1.2]">
+              Most transformations stall because the people who design them never meet the people who have to live inside them. Our method closes that gap before a single line of code is written.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* STEP DEEP DIVES */}
-      {steps.map((s) => (
-        <section
-          key={s.n}
-          className="px-6 lg:px-8 py-24 md:py-28 border-t border-[#ebe6dd]"
-        >
-          <div className="mx-auto max-w-7xl grid gap-12 md:grid-cols-12 items-start">
-            <div className="md:col-span-4">
-              <Reveal>
-                <div className="text-sm font-mono text-[#ff5a1f]">{s.n}</div>
-                <h2 className="mt-3 text-4xl md:text-5xl font-extrabold text-[#1C1C1C] leading-tight">
-                  {s.title}
-                </h2>
-                <p className="mt-6 text-base md:text-lg text-[#3a3a3a] leading-relaxed">
-                  {s.lead}
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="md:col-span-7 md:col-start-6 space-y-8">
-              <Reveal delay={100}>
-                <p className="text-base md:text-lg text-[#3a3a3a] leading-relaxed">{s.body}</p>
-              </Reveal>
-              <Reveal delay={160}>
-                <ul className="divide-y divide-[#ebe6dd] border-t border-b border-[#ebe6dd]">
-                  {s.notes.map((note, idx) => (
-                    <li key={idx} className="flex gap-4 py-4">
-                      <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[#ff5a1f] flex-none" />
-                      <p className="text-sm md:text-base text-[#3a3a3a] leading-relaxed">
-                        {note}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* BOTTOM CTA */}
-      <section className="px-6 lg:px-8 py-24 md:py-32 border-t border-[#ebe6dd]">
-        <div className="mx-auto max-w-4xl text-center">
+      {/* FINAL CTA */}
+      <section className="bg-[#faf6ef] border-t border-[#e5e2db]">
+        <div className="max-w-3xl mx-auto px-6 py-24 md:py-32 text-center">
           <Reveal>
-            <h2 className="text-4xl md:text-6xl font-extrabold text-[#1C1C1C] leading-[0.98] text-balance">
-              The first step is a conversation.
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0a0a0a] text-balance leading-[1.1]">
+              Ready to see the method in your business?
             </h2>
-            <p className="mt-6 text-base md:text-lg text-[#3a3a3a] max-w-2xl mx-auto leading-relaxed">
-              Thirty minutes with a senior partner. No slides. We will tell you whether your
-              program is in a good place to start, and what we would do first.
+            <p className="mt-6 text-lg text-[#2a2a2a] leading-relaxed">
+              A short call is the fastest way to find out where AI shifts the math for your team and what a credible first step looks like.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap gap-3 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-[#1C1C1C] px-6 py-3 text-sm font-medium text-[#f9f7f3] hover:bg-black transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-[#1f4d3a] px-7 py-3.5 text-sm font-semibold text-[#faf6ef] hover:bg-[#163829] transition-colors"
               >
-                Book a call
+                Book a strategy call
+                <span aria-hidden="true">{'→'}</span>
               </Link>
               <Link
                 href="/solutions"
-                className="inline-flex items-center justify-center rounded-full border border-[#d4cfc4] bg-white px-6 py-3 text-sm font-medium text-[#1C1C1C] hover:border-[#1C1C1C] transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-[#0a0a0a] bg-transparent px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#faf6ef] transition-colors"
               >
-                See solutions
+                Compare engagements
               </Link>
             </div>
           </Reveal>

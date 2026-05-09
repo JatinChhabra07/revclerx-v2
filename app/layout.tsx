@@ -4,12 +4,14 @@ import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-inter',
   display: 'swap'
 })
 
 const grotesk = Space_Grotesk({
   subsets: ['latin'],
+  weight: ['500', '700'],
   variable: '--font-grotesk',
   display: 'swap'
 })
@@ -17,45 +19,48 @@ const grotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://revclerx.ai'),
   title: {
-    default: 'RevClerx | Your AI transformation partner',
-    template: '%s | RevClerx'
+    default: 'RevClerx.ai | Enterprise AI That Delivers Outcomes',
+    template: '%s | RevClerx.ai'
   },
   description:
-    'RevClerx is a senior consulting team that helps enterprises ship AI programs that survive contact with reality. Assessment, continuous transformation, and production deployment.',
+    'RevClerx partners with enterprises to design, deploy, and operationalize AI that drives measurable business value. 50+ deployments, 12+ industries, 4 week POC delivery.',
+  applicationName: 'RevClerx.ai',
   keywords: [
-    'enterprise AI consulting',
-    'AI readiness assessment',
-    'AI deployment',
-    'AI transformation',
-    'RevClerx'
+    'enterprise AI',
+    'AI consulting',
+    'AI agents',
+    'process automation',
+    'conversational AI',
+    'AI strategy',
+    'ML operations'
   ],
+  authors: [{ name: 'RevClerx.ai' }],
   openGraph: {
     type: 'website',
-    title: 'RevClerx | Your AI transformation partner',
+    siteName: 'RevClerx.ai',
+    title: 'RevClerx.ai | Enterprise AI That Delivers Outcomes',
     description:
-      'A senior consulting team for enterprise AI programs. Honest assessments, durable architectures, and deployments that hold up in production.',
+      'AI that works. Results that matter. Assess, accelerate, and sustain enterprise AI with RevClerx.',
     url: 'https://revclerx.ai',
-    siteName: 'RevClerx'
+    images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'RevClerx.ai' }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RevClerx | Your AI transformation partner',
-    description:
-      'A senior consulting team for enterprise AI programs. Honest assessments, durable architectures, and deployments that hold up in production.'
+    title: 'RevClerx.ai | Enterprise AI That Delivers Outcomes',
+    description: 'AI that works. Results that matter.',
+    images: ['/logo.png']
   },
-  robots: {
-    index: true,
-    follow: true
-  },
-  icons: {
-    icon: '/favicon.ico'
-  }
+  robots: { index: true, follow: true },
+  icons: { icon: '/favicon.svg' }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
-      <body className="bg-[#f9f7f3] text-[#3a3a3a] antialiased font-sans">{children}</body>
+      <body className="bg-white text-slate-700 antialiased font-sans">
+        <div className="bg-grid" aria-hidden="true" />
+        {children}
+      </body>
     </html>
   )
 }
