@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   WEBSITE FACTORY — KEYFRAME LIBRARY
+   WEBSITE FACTORY KEYFRAME LIBRARY
    ═══════════════════════════════════════════════════════════════════
 
    Every CSS keyframe + utility class used across the 5 source sites,
@@ -493,7 +493,7 @@
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 
 /* ═══════════════════════════════════════════════════════════════════
-   REDUCED MOTION (ALWAYS INCLUDE — non-negotiable)
+   REDUCED MOTION (ALWAYS INCLUDE, non-negotiable)
    ═══════════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

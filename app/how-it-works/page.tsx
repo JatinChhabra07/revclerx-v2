@@ -3,7 +3,7 @@ import Reveal from '@/components/Reveal'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
-import { ArrowRight, Mic, Map, Compass, Rocket, Check } from 'lucide-react'
+import { ArrowRight, Search, Compass, Code2, Rocket, TrendingUp, Check } from 'lucide-react'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { CTABanner } from '@/components/ui/cta-banner'
 import { SectionEyebrow } from '@/components/ui/section-eyebrow'
@@ -12,12 +12,12 @@ import { QuoteBlock } from '@/components/ui/quote-block'
 export const metadata: Metadata = {
   title: 'How it works | The RevClerx method',
   description:
-    'A four-step method for enterprise AI transformation: interview at scale, map how work flows, sequence a roadmap, transform with embedded engineers.',
+    'A five-step method for enterprise AI transformation: Assess, Strategize, Build, Deploy, Scale. One team owns the entire arc.',
 }
 
 type Step = {
   num: string
-  icon: typeof Mic
+  icon: typeof Search
   title: string
   tagline: string
   description: string
@@ -29,67 +29,88 @@ type Step = {
 const STEPS: Step[] = [
   {
     num: '01',
-    icon: Mic,
-    title: 'Interviews',
-    tagline: 'Every employee. Privately. In parallel.',
+    icon: Search,
+    title: 'Assess',
+    tagline: 'See where AI moves the math. Honestly.',
     description:
-      'Senior consultants and dedicated AI agents run private 30-minute conversations across the organization. We talk to operators on the front line, the engineers behind the systems, and the executives setting the bar. The goal is to understand how work actually flows, not how the org chart claims it does.',
+      'Every engagement begins with an AI readiness audit. We look at your data, talent, tooling, governance, and operating reality, and surface where AI is high-leverage, and where it is theatre. No one writes a roadmap until we have that shared map.',
     deliverables: [
-      'Confidential 30-min conversations across functions and seniority',
-      'AI-assisted synthesis that captures every signal in the room',
-      'Stakeholder map with explicit champions and quiet skeptics',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'AI-assisted interview session in modern workspace',
-  },
-  {
-    num: '02',
-    icon: Map,
-    title: 'Map',
-    tagline: 'See your operating model. As it really is.',
-    description:
-      'We translate everything we heard into a granular operational map of your business. Every process, handoff, and decision point is on it. Where work moves smoothly, where it stalls, and where AI shifts the underlying math become visible in the same picture.',
-    deliverables: [
-      'Process-level map of operations across business units',
-      'Friction inventory with quantified time and cost estimates',
-      'Capability assessment of data, tooling, and team readiness',
-    ],
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Operational map visualization on screen',
-  },
-  {
-    num: '03',
-    icon: Compass,
-    title: 'Roadmap',
-    tagline: 'A plan your CFO will sign off on.',
-    description:
-      'We sequence the opportunity set into a prioritized transformation plan. Each initiative carries a feasibility read, a measurable business outcome, and a defensible cost line. The order is set by dependency and risk, not by enthusiasm.',
-    deliverables: [
-      'Twelve-month roadmap with quarterly milestones and owners',
-      'ROI model grounded in your numbers, not industry averages',
-      'Risk register covering data, security, and change management',
+      'Data, talent, and tooling readiness scorecard',
+      'Workflow inventory with AI-leverage scoring',
+      'Risk, security, and compliance posture review',
+      'Honest read on what is ready and what is not',
     ],
     image:
       'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Strategy roadmap with priorities and timeline',
+    imageAlt: 'AI readiness assessment in a strategy session',
+  },
+  {
+    num: '02',
+    icon: Compass,
+    title: 'Strategize',
+    tagline: 'A roadmap your CFO will fund.',
+    description:
+      'We sequence the opportunities into a prioritized transformation plan. Each initiative carries a feasibility read, a measurable business outcome, and a defensible ROI line. The order is set by dependency and risk, not by enthusiasm or vendor pitches.',
+    deliverables: [
+      'Twelve-month roadmap with quarterly milestones and owners',
+      'ROI model grounded in your numbers, not industry averages',
+      'Architecture sketch covering data, models, integration, and ops',
+      'Risk register covering data, security, and change management',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'AI transformation roadmap on a screen',
+  },
+  {
+    num: '03',
+    icon: Code2,
+    title: 'Build',
+    tagline: 'Engineers shipping, not consultants slideware.',
+    description:
+      'Forward-deployed engineers move inside your perimeter and ship the systems on the roadmap. Agents, RAG, ML pipelines, fine-tuned models, integrations, all built against your real data, your real stack, your real security policy.',
+    deliverables: [
+      'Production AI systems built on your data and your stack',
+      'Eval suites and guardrails sized to the use case',
+      'Documentation, runbooks, and tests that your team can extend',
+      'Hands-on knowledge transfer alongside delivery',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Engineering team building a production AI system',
   },
   {
     num: '04',
     icon: Rocket,
-    title: 'Transform',
-    tagline: 'Production AI. Owned by your team.',
+    title: 'Deploy',
+    tagline: 'Inside the workflows your operators already use.',
     description:
-      'Forward-deployed engineers move inside your perimeter and ship the systems on the roadmap. Enablement runs alongside delivery so your operators learn the patterns as they land. We graduate ownership to your team before we leave.',
+      'A model in a notebook is not a deployment. We integrate the system into the tools your operators live in (ERP, CRM, ticketing, internal apps), handle the security review, train the team, and watch the first weeks of production traffic with you.',
     deliverables: [
-      'Production AI systems integrated with your stack and data',
-      'Hands-on enablement so your team owns what we built',
+      'Deep integration with your ERP, CRM, ticketing, and data lake',
+      'Security and compliance review baked into the cutover',
+      'Operator enablement so your team owns what we built',
       'Adoption telemetry that proves the change is real and sticking',
     ],
     image:
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Engineering team shipping production system',
+      'https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'AI deployment workshop with the client team',
+  },
+  {
+    num: '05',
+    icon: TrendingUp,
+    title: 'Scale',
+    tagline: 'From one pilot to enterprise-wide value.',
+    description:
+      'Production AI compounds when you operate it well. We run MLOps, model performance and cost monitoring, governance reporting, and continuous improvement, while the playbooks we built take the win to the next business unit.',
+    deliverables: [
+      'MLOps and LLMOps with CI/CD, eval suites, and drift monitoring',
+      'Model performance, cost, and safety monitoring with alerting',
+      'Continuous tuning, prompt iteration, and retrieval optimization',
+      'Scale-out playbooks that move the win across the business',
+    ],
+    image:
+      'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Operations team scaling AI across the enterprise',
   },
 ]
 
@@ -108,14 +129,14 @@ export default function HowItWorksPage() {
             </div>
           </Reveal>
           <h1 className="mt-7 text-5xl md:text-7xl font-semibold tracking-tight text-ink-900 text-balance leading-[1.04] max-w-4xl">
-            <VerticalCutReveal>How transformation actually happens.</VerticalCutReveal>
+            <VerticalCutReveal>From idea to industrialization. In five steps.</VerticalCutReveal>
           </h1>
           <Reveal delay={0.4}>
             <p className="mt-7 max-w-2xl text-lg md:text-xl text-body leading-relaxed">
-              A four-step method that pairs AI scale with human judgment. We listen across the organization, map how work moves, sequence the roadmap, and stay through execution until the change is real.
+              A method built for the part where most AI work stalls: the handoff between strategy and engineering, between pilot and production, between a model that works and a system the business owns.
             </p>
             <p className="mt-3 max-w-2xl text-base text-muted leading-relaxed">
-              The work compounds because every step hands the next one a sharper picture.
+              We do not hand the work off. We carry it from readiness to scale with one team.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href="/contact" className="btn-accent">
@@ -123,14 +144,14 @@ export default function HowItWorksPage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <Link href="/solutions" className="btn-secondary">
-                See engagement models
+                See our services
               </Link>
             </div>
           </Reveal>
 
           {/* anchor strip */}
           <Reveal delay={0.55}>
-            <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="mt-14 grid grid-cols-2 md:grid-cols-5 gap-3">
               {STEPS.map((s) => {
                 const Icon = s.icon
                 return (
@@ -205,19 +226,25 @@ export default function HowItWorksPage() {
                 </Reveal>
 
                 {/* IMAGE */}
-                <Reveal className="lg:col-span-6" delay={0.15}>
-                  <div className="relative">
-                    <div className="img-frame aspect-[4/3] relative">
+                <Reveal className="lg:col-span-6" delay={0.15} variant="slide-up">
+                  <div className="group relative">
+                    <div className="img-frame aspect-[4/3] relative overflow-hidden">
                       <Image
                         src={step.image}
                         alt={step.imageAlt}
                         fill
                         sizes="(min-width: 1024px) 600px, 100vw"
-                        className="object-cover"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                     </div>
-                    {/* number badge floating */}
-                    <div className="absolute -top-5 -left-5 md:-top-7 md:-left-7 inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-ink-900 text-cream font-display font-bold text-3xl md:text-4xl shadow-[0_18px_40px_-18px_rgba(10,10,10,0.4)]">
+                    {/* number badge floating, brand gradient pill */}
+                    <div
+                      className="absolute -top-5 -left-5 md:-top-7 md:-left-7 inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-3xl text-cream font-display font-bold text-3xl md:text-4xl shadow-[0_18px_40px_-12px_rgba(122,43,196,0.45)] transition-transform duration-500 group-hover:rotate-[-6deg] group-hover:scale-105"
+                      style={{
+                        background:
+                          'linear-gradient(135deg, #3340D4 0%, #7A2BC4 55%, #E91E83 100%)',
+                      }}
+                    >
                       {step.num}
                     </div>
                   </div>
@@ -229,13 +256,14 @@ export default function HowItWorksPage() {
       })}
 
       {/* WHY IT WORKS */}
-      <section className="relative bg-ink-950 text-cream overflow-hidden border-t border-ink-800">
-        <div aria-hidden="true" className="absolute -top-40 left-1/3 w-[500px] h-[500px] rounded-full bg-accent/30 blur-[140px]" />
+      <section className="relative bg-cream-50 text-ink-900 overflow-hidden border-t border-line">
+        <div aria-hidden="true" className="absolute -top-40 left-1/3 w-[500px] h-[500px] rounded-full bg-brand-purple/12 blur-[140px]" />
+        <div aria-hidden="true" className="absolute -bottom-40 -right-32 w-[420px] h-[420px] rounded-full bg-brand-magenta/10 blur-[140px]" />
         <div className="relative max-w-5xl mx-auto px-6 py-24 md:py-36 text-center">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-cream/55">Why this works</p>
-            <p className="mt-7 text-3xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-cream text-balance">
-              Most transformations stall because the people who design them never meet the people who have to live inside them. Our method closes that gap before a single line of code is written.
+            <p className="text-xs uppercase tracking-[0.3em] text-muted">Why this works</p>
+            <p className="mt-7 text-3xl md:text-5xl font-semibold tracking-tight leading-[1.15] text-ink-900 text-balance">
+              Most AI work breaks at the seams between disciplines: strategy to engineering, pilot to production, model to operations. <span className="grad-text-brand">Our method does not have those seams.</span>
             </p>
           </Reveal>
         </div>
@@ -245,9 +273,9 @@ export default function HowItWorksPage() {
       <section className="bg-cream-200 border-y border-line py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <QuoteBlock
-            quote="AI transformation starts when the company can finally see itself."
+            quote="AI transformation is not a slide. It is a system running in production, owned by a team that knows why."
             author="The RevClerx Method"
-            role="In four words"
+            role="In one line"
           />
         </div>
       </section>
@@ -257,7 +285,7 @@ export default function HowItWorksPage() {
         title="Ready to see the method in your business?"
         body="A short call is the fastest way to find out where AI shifts the math for your team and what a credible first step looks like."
         primaryLabel="Book a strategy call"
-        secondaryLabel="Compare engagements"
+        secondaryLabel="See our services"
         secondaryHref="/solutions"
       />
     </PageShell>

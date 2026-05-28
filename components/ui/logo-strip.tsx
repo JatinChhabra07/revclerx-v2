@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 
+// Tech platforms we build on and partner across, what enterprises
+// already run, plus the AI/data stack we ship into production.
 const LOGOS = [
-  'Microsoft', 'Salesforce', 'Atlassian', 'Snowflake', 'Databricks',
-  'Workday', 'ServiceNow', 'Stripe', 'Datadog', 'HubSpot',
-  'Notion', 'Anthropic', 'OpenAI'
+  'AWS', 'Microsoft Azure', 'Google Cloud', 'Databricks', 'Snowflake',
+  'NVIDIA', 'OpenAI', 'Anthropic', 'Hugging Face', 'Pinecone',
+  'MongoDB', 'PostgreSQL', 'Kubernetes', 'Docker'
 ]
 
 export function LogoStrip() {

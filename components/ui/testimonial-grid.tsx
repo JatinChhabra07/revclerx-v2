@@ -7,7 +7,7 @@ import { Star } from 'lucide-react'
 const T = [
   {
     quote:
-      'In four weeks they had a clearer map of how our supply chain actually runs than we built in two years of internal workshops. The roadmap is now what the board reviews.',
+      'They walked in with a roadmap, walked out with the systems running in production. The team I usually have to chase for handover documents handed mine ownership and a Slack channel.',
     author: 'Marcus Chen',
     role: 'Chief Operating Officer · Industrial Manufacturing',
     image:
@@ -16,7 +16,7 @@ const T = [
   },
   {
     quote:
-      'The AI interviews surfaced friction the front-line had stopped raising. Two of those bottlenecks turned into our biggest first-quarter wins.',
+      'Our claims review agent processes documents at a third of the time and double the precision. The ROI conversation with the board was the easiest one all year.',
     author: 'Priya Ramaswamy',
     role: 'VP Operations · Financial Services',
     image:
@@ -25,7 +25,7 @@ const T = [
   },
   {
     quote:
-      'Forward-deployed engineers shipped what our internal team would have taken six months to scope. And the handover was real, not a deck.',
+      'Six months ago we had four stuck pilots. RevClerx killed two, productionized one, and built the fourth into a platform our other business units now use.',
     author: 'David Klein',
     role: 'Chief Information Officer · Healthcare Network',
     image:
@@ -44,11 +44,20 @@ export function TestimonialGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white border border-line rounded-3xl p-7 card-hover"
+          whileHover={{ y: -6 }}
+          className="group bg-white border border-line rounded-3xl p-7 card-hover"
         >
           <div className="flex items-center gap-1 text-amber-500 mb-4">
             {Array.from({ length: 5 }).map((_, j) => (
-              <Star key={j} className="w-4 h-4 fill-current" />
+              <motion.span
+                key={j}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.1 + j * 0.06, type: 'spring', stiffness: 300, damping: 18 }}
+              >
+                <Star className="w-4 h-4 fill-current" />
+              </motion.span>
             ))}
           </div>
           <blockquote className="text-base text-ink-900 leading-relaxed">

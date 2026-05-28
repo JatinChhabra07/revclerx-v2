@@ -14,27 +14,27 @@ const FAQ = [
   {
     question: 'How long does a typical engagement take?',
     answer:
-      'Most engagements run between 4 and 16 weeks end to end. A focused proof of concept lands in 4 weeks, a full production deployment in 10 to 12, and an ongoing managed program runs quarter by quarter after that.',
+      'A strategy and readiness engagement runs 3 to 4 weeks. A first AI pilot lands in production in 6 to 10 weeks. Full implementations run 10 to 16 weeks per system, with managed operations running quarter by quarter afterward.',
   },
   {
-    question: 'Do you work with our existing data team or replace it?',
+    question: 'Do you work with our existing data and engineering teams?',
     answer:
-      'We work with you, never around you. Our model is to embed alongside your existing data, ML, and engineering teams, transfer knowledge throughout the engagement, and leave your team strictly more capable than we found them.',
+      'We work with you, never around you. We embed alongside your existing data, ML, and engineering teams, transfer knowledge throughout the engagement, and leave your bench strictly more capable than we found it.',
   },
   {
-    question: 'What does the AI Readiness Sprint cover?',
+    question: 'What does the AI Readiness Assessment cover?',
     answer:
-      'The two-week sprint maps your data landscape, prioritizes use cases against expected ROI, evaluates risk and compliance posture, and outputs a 90-day execution plan with budget and staffing.',
+      'A 3-to-4-week diagnostic that audits your data, talent, tooling, governance, and operating reality. We output a readiness scorecard, a prioritized opportunity list with ROI scoring, and a 90-day execution plan with budget and staffing.',
   },
   {
-    question: 'Can you deploy on premise or air gapped?',
+    question: 'Can you deploy on premise or air-gapped?',
     answer:
-      'Yes. We have shipped into VPC, on premise, and fully air gapped environments. We support open-weight model deployment, private inference endpoints, and a model-agnostic architecture.',
+      'Yes. We have shipped into VPC, on premise, and fully air-gapped environments. We support open-weight model deployment, private inference endpoints, and a model-agnostic architecture.',
   },
   {
     question: 'How do you handle data security and compliance?',
     answer:
-      'Security is treated as a first-class engineering deliverable, not an afterthought. We follow SOC 2 Type II controls, support GDPR and HIPAA workloads, and ship with audit logging by default.',
+      'Security is engineered in, not bolted on. We follow SOC 2 Type II controls, support GDPR and HIPAA workloads, and ship with audit logging and Responsible AI controls by default.',
   },
 ]
 
@@ -86,7 +86,7 @@ export default function ContactPage() {
       <section className="pb-20 md:pb-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-10">
-            {/* LEFT — FORM */}
+            {/* LEFT: FORM */}
             <Reveal className="lg:col-span-7">
               <div className="relative bg-white border border-line rounded-3xl p-7 md:p-10 shadow-[0_30px_80px_-30px_rgba(10,10,10,0.18)]">
                 <div className="flex items-start justify-between gap-4 mb-7">
@@ -205,24 +205,23 @@ export default function ContactPage() {
               </div>
             </Reveal>
 
-            {/* RIGHT — INFO PANEL */}
+            {/* RIGHT: INFO PANEL */}
             <Reveal className="lg:col-span-5" delay={0.15}>
               <div className="space-y-8">
-                {/* Visual */}
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden img-frame">
-                  <Image
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
-                    alt="Strategy session in progress"
-                    fill
-                    sizes="(min-width: 1024px) 480px, 100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/30 to-transparent" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                    <p className="text-cream text-lg font-semibold leading-tight max-w-xs">
-                      &ldquo;Thirty minutes to know if RevClerx is the right partner for your moment.&rdquo;
-                    </p>
+                {/* Visual + soft caption */}
+                <div className="relative rounded-3xl overflow-hidden bg-white border border-line">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80"
+                      alt="Strategy session in progress"
+                      fill
+                      sizes="(min-width: 1024px) 480px, 100vw"
+                      className="object-cover"
+                    />
                   </div>
+                  <p className="px-6 py-5 text-ink-900 text-base font-semibold leading-snug">
+                    &ldquo;Thirty minutes to know if RevClerx is the right partner for your moment.&rdquo;
+                  </p>
                 </div>
 
                 {/* Get in touch */}

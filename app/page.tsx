@@ -2,11 +2,10 @@ import PageShell from '@/components/PageShell'
 import Reveal from '@/components/Reveal'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Banknote, HeartPulse, ShoppingBag, Factory, Truck, Radio } from 'lucide-react'
 import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { HeroVisual } from '@/components/ui/hero-visual'
-import { LogoStrip } from '@/components/ui/logo-strip'
 import { MethodGrid } from '@/components/ui/method-grid'
 import { SolutionCards } from '@/components/ui/solution-cards'
 import { QuoteBlock } from '@/components/ui/quote-block'
@@ -16,56 +15,67 @@ import { CTABanner } from '@/components/ui/cta-banner'
 import { SectionEyebrow } from '@/components/ui/section-eyebrow'
 import { BackedByBadge } from '@/components/ui/yc-badge'
 import { StatCounter } from '@/components/ui/stat-counter'
+import { IndustryCard } from '@/components/ui/industry-card'
+import { MagneticButton } from '@/components/ui/magnetic-button'
 
 export const metadata: Metadata = {
-  title: 'Your AI Transformation Partner',
+  title: 'AI Transformation, From Strategy to Production',
   description:
-    'RevClerx maps how your company really works, identifies where AI should change it, and helps you make it happen.',
+    'RevClerx is the AI transformation partner for enterprises. AI consulting plus implementation. Board-ready strategy and engineers who ship.',
 }
 
 const FAQ = [
   {
-    question: 'How is this different from hiring a consulting firm?',
+    question: 'How is RevClerx different from a traditional consulting firm?',
     answer:
-      "Consultants interview a handful of leaders and give you a deck. We interview your entire organization through AI, map how things actually work, and stay with you to make sure the transformation happens. It's faster, deeper, and built for real change.",
+      'Most consulting firms hand you a deck and walk away. We own the work end to end, across strategy, build, deploy, and scale, with the same senior team across the entire arc. No handoff cliffs between PowerPoint and production.',
   },
   {
-    question: 'What do the AI interviews look like for my teams?',
+    question: 'We have stalled AI pilots. Can you actually move them?',
     answer:
-      "Each employee has a private 30-minute conversation with an AI agent about their daily work, tools, bottlenecks, and ideas. No prep needed on their side. It's simple, confidential, and people are often more open than they'd be with a human consultant.",
+      'Yes. This is the most common reason teams come to us. We start by auditing what is blocking the pilot (data, integration, governance, change management), then either productionize it or kill it cleanly so the team can re-deploy capacity to the work that scales.',
   },
   {
-    question: 'How fast can we expect results?',
+    question: 'How long does it take to see real value?',
     answer:
-      'The first Assessment takes about 10 days. We run all interviews in parallel, then deliver a full operational map and a prioritized transformation roadmap, validated by a dedicated human expert. You get clarity fast.',
+      'A first pilot lands in production inside 6 to 10 weeks. Strategy engagements deliver a defensible roadmap in 3 to 4 weeks. Full enterprise scale-out runs quarter by quarter, with measurable outcomes per quarter.',
   },
   {
-    question: 'How do you upskill our employees on AI?',
+    question: 'Do you work with our existing data and engineering teams?',
     answer:
-      "Every week, each employee receives a personalized briefing: relevant AI tips, industry news, and a short presentation tailored to their exact role and daily tasks. Because we know what each person actually does, the content is immediately actionable. That's how you make transformation stick.",
+      'Always with you, never around you. We embed alongside your teams, transfer ownership as we go, and leave your bench strictly more capable than we found it. The end state is your team running the systems we built together.',
   },
   {
-    question: 'Is this adapted to our company size?',
+    question: 'What kind of AI work do you actually do?',
     answer:
-      'Yes. We work with companies from 50 employees to large enterprises. The scope, format, and pricing are adapted to your reality. Every organization faces different challenges, and the engagement reflects that.',
+      'AI strategy and readiness, custom GenAI and agentic systems, RAG and search, model fine-tuning, data engineering and MLOps, AI-driven process automation, and managed AI operations. Stack-agnostic across AWS, Azure, GCP, open and closed models.',
   },
   {
-    question: 'What about data security?',
+    question: 'How do you handle data security and compliance?',
     answer:
-      'We sign NDAs and DPAs before any engagement. All data is encrypted, access is strictly controlled, and nothing is shared externally. Interview responses are anonymized in deliverables unless explicitly agreed otherwise.',
+      'Security is engineered in, not bolted on. NDAs and DPAs on day one. We ship into VPC, on-prem, and air-gapped environments, support SOC 2, GDPR, and HIPAA workloads, and ship with audit logging by default.',
   },
   {
-    question: 'How much does it cost?',
+    question: 'How much does an engagement cost?',
     answer:
-      'Pricing depends on the plan you choose and the size of your organization. As a benchmark, RevClerx is typically 3 to 5x less expensive than traditional consulting — with broader coverage and faster delivery.',
+      'Strategy work is fixed fee. Implementation is project plus retainer, scoped to your priorities. As a benchmark, we typically run 3 to 5x leaner than tier-one consulting on equivalent scope, because we run on senior teams without the layered bench.',
   },
 ]
 
 const STATS = [
-  { value: 50, suffix: '+', label: 'Org-wide AI interviews per engagement', sub: 'Median per first assessment' },
-  { value: 10, suffix: '', label: 'Days to a full operational map', sub: 'Parallel AI delivery' },
-  { value: 3, suffix: '–5x', label: 'Less expensive than traditional consulting', sub: 'Broader coverage, faster' },
-  { value: 92, suffix: '%', label: 'Of priorities make it to production', sub: 'Tracked across the first 12 months' },
+  { value: 4, suffix: '-6x', label: 'Average year-one ROI on production deployments', sub: 'Across 40+ engagements' },
+  { value: 6, suffix: 'wk', label: 'From kickoff to first pilot in production', sub: 'On standard cloud stacks' },
+  { value: 90, suffix: '%', label: 'Of pilots we own graduate to production', sub: 'Industry benchmark is ~13%' },
+  { value: 12, suffix: '+', label: 'Industries served across BFSI, healthcare, retail', sub: 'Regulated and consumer' },
+]
+
+const INDUSTRIES = [
+  { icon: Banknote, name: 'Banking & Financial Services', body: 'Fraud, claims, KYC, advisory copilots' },
+  { icon: HeartPulse, name: 'Healthcare & Life Sciences', body: 'Clinical ops, prior-auth, R&D acceleration' },
+  { icon: ShoppingBag, name: 'Retail & E-commerce', body: 'Personalization, demand, conversational commerce' },
+  { icon: Factory, name: 'Manufacturing', body: 'Quality, predictive maintenance, supply intelligence' },
+  { icon: Truck, name: 'Logistics & Supply Chain', body: 'Routing, ETA, document automation, warehousing' },
+  { icon: Radio, name: 'Telecom, Media & Tech', body: 'Customer ops, content, network intelligence' },
 ]
 
 export default function HomePage() {
@@ -75,27 +85,32 @@ export default function HomePage() {
       <section className="relative overflow-hidden">
         <div aria-hidden="true" className="bg-radial-soft" />
         <div aria-hidden="true" className="bg-grid-faint" />
-        <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-20 md:pt-28 md:pb-28">
+        <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-14 md:pt-28 md:pb-16">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* LEFT - copy */}
+            {/* LEFT: copy */}
             <div className="lg:col-span-7">
               <BackedByBadge />
               <h1 className="mt-6 text-5xl md:text-7xl lg:text-[5.4rem] font-semibold tracking-tight text-ink-900 leading-[1.02] text-balance">
-                <VerticalCutReveal>Your AI Transformation Partner.</VerticalCutReveal>
+                <VerticalCutReveal>Stop stalling on AI. Start shipping it.</VerticalCutReveal>
               </h1>
               <Reveal delay={0.4}>
                 <p className="mt-7 max-w-xl text-lg md:text-xl text-body leading-relaxed">
-                  RevClerx maps how your company really works, identifies where AI should change it, and helps you make it happen.
+                  RevClerx is the AI transformation partner for enterprises. We pair board-ready strategy with engineers who put production AI on your stack, and stay through scale.
                 </p>
               </Reveal>
               <Reveal delay={0.55}>
                 <div className="mt-9 flex flex-wrap items-center gap-3">
-                  <Link href="/contact" className="btn-accent">
-                    Book a demo
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                  <Link href="/how-it-works" className="btn-secondary">
-                    Explore our approach
+                  <MagneticButton strength={0.3}>
+                    <Link href="/contact" className="btn-accent">
+                      Assess your AI readiness
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </MagneticButton>
+                  <Link
+                    href="/how-it-works"
+                    className="btn-secondary transition-transform hover:-translate-y-0.5"
+                  >
+                    See how we work
                   </Link>
                 </div>
               </Reveal>
@@ -116,13 +131,13 @@ export default function HomePage() {
                     ))}
                   </div>
                   <span>
-                    Trusted by leadership at <span className="text-ink-900 font-semibold">enterprise teams</span> across regulated industries
+                    Trusted by <span className="text-ink-900 font-semibold">CIOs and operators</span> across regulated enterprises
                   </span>
                 </div>
               </Reveal>
             </div>
 
-            {/* RIGHT - visual */}
+            {/* RIGHT: visual */}
             <div className="lg:col-span-5 relative">
               <HeroVisual />
             </div>
@@ -130,28 +145,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRUST STRIP - LOGOS */}
-      <section className="py-14 md:py-20 border-y border-line bg-cream-50">
+      {/* SERVICES */}
+      <section className="relative py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal>
-            <p className="text-center text-xs uppercase tracking-[0.3em] text-muted mb-10">
-              Trusted alongside the platforms enterprises already run on
-            </p>
-          </Reveal>
-          <LogoStrip />
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <Reveal className="max-w-2xl">
+              <SectionEyebrow>What we do</SectionEyebrow>
+              <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink-900 leading-[1.05] text-balance">
+                AI consulting and implementation. <span className="text-muted">Under one roof.</span>
+              </h2>
+              <p className="mt-5 text-base md:text-lg text-body max-w-xl leading-relaxed">
+                Strategy that names the right move, engineers who build it, and operators who keep it running. The same team across the whole arc.
+              </p>
+            </Reveal>
+            <Reveal>
+              <Link href="/solutions" className="link-grow">
+                See all services <ArrowUpRight className="w-4 h-4 arrow-x" />
+              </Link>
+            </Reveal>
+          </div>
+          <SolutionCards />
         </div>
       </section>
 
       {/* METHOD */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-24 md:py-32 bg-cream-50 border-y border-line">
         <div className="max-w-7xl mx-auto px-6">
           <Reveal className="max-w-3xl">
             <SectionEyebrow>Our method</SectionEyebrow>
             <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink-900 leading-[1.05] text-balance">
-              AI agents for scale and depth.
-              <br />
-              <span className="text-muted">Human experts for judgment and implementation.</span>
+              A five-step path from idea to industrialization.
             </h2>
+            <p className="mt-5 text-base md:text-lg text-body max-w-2xl leading-relaxed">
+              Most AI work stalls between strategy and scale. Our method closes that gap with one team that owns assessment, build, and operations.
+            </p>
           </Reveal>
           <div className="mt-16 md:mt-20">
             <MethodGrid />
@@ -165,60 +192,63 @@ export default function HomePage() {
         <div aria-hidden="true" className="accent-glow -bottom-20 -right-20" />
         <div className="relative max-w-7xl mx-auto px-6">
           <QuoteBlock
-            quote="AI transformation starts when the company can finally see itself."
+            quote="AI transformation is not a slide. It is a system running in production, owned by a team that knows why."
             author="The RevClerx Method"
-            role="In four words"
+            role="In one line"
           />
         </div>
       </section>
 
-      {/* SOLUTIONS */}
+      {/* INDUSTRIES */}
       <section className="relative py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-            <Reveal className="max-w-2xl">
-              <SectionEyebrow>Solutions</SectionEyebrow>
-              <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink-900 leading-[1.05] text-balance">
-                Three ways to engage.
-              </h2>
-              <p className="mt-5 text-base md:text-lg text-body max-w-xl leading-relaxed">
-                The same senior bench works across all three. The shape of the engagement is the only thing that changes.
-              </p>
-            </Reveal>
-            <Reveal>
-              <Link href="/solutions" className="link-grow">
-                See all engagements <ArrowUpRight className="w-4 h-4 arrow-x" />
-              </Link>
-            </Reveal>
+          <Reveal className="max-w-3xl mb-14 md:mb-16">
+            <SectionEyebrow>Industries</SectionEyebrow>
+            <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink-900 leading-[1.05] text-balance">
+              Where we ship most.
+            </h2>
+            <p className="mt-5 text-base md:text-lg text-body max-w-2xl leading-relaxed">
+              Deep delivery experience across regulated and consumer-facing industries. Patterns we have already shipped become accelerators on day one.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {INDUSTRIES.map(({ icon: Icon, name, body }, i) => (
+              <Reveal key={name} delay={i * 0.05} variant="slide-up">
+                <IndustryCard
+                  name={name}
+                  body={body}
+                  iconNode={<Icon className="w-5 h-5 text-accent" strokeWidth={1.7} />}
+                />
+              </Reveal>
+            ))}
           </div>
-          <SolutionCards />
         </div>
       </section>
 
       {/* STATS */}
-      <section className="relative py-24 md:py-32 bg-ink-950 text-cream overflow-hidden">
-        <div aria-hidden="true" className="absolute -top-40 -left-32 w-[420px] h-[420px] rounded-full bg-accent/30 blur-[140px]" />
-        <div aria-hidden="true" className="absolute -bottom-40 -right-32 w-[420px] h-[420px] rounded-full bg-amber-500/15 blur-[140px]" />
+      <section className="relative py-24 md:py-32 bg-cream-200 border-y border-line overflow-hidden">
+        <div aria-hidden="true" className="absolute -top-40 -left-32 w-[420px] h-[420px] rounded-full bg-brand-blue/15 blur-[140px]" />
+        <div aria-hidden="true" className="absolute -bottom-40 -right-32 w-[420px] h-[420px] rounded-full bg-brand-magenta/15 blur-[140px]" />
         <div className="relative max-w-7xl mx-auto px-6">
           <Reveal className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.28em] text-cream/55 inline-flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-accent" />
-              Outcomes we deliver
+            <p className="text-xs uppercase tracking-[0.28em] text-muted inline-flex items-center gap-2">
+              <span className="w-1 h-1 rounded-full bg-brand-magenta" />
+              Outcomes that show up on the P&amp;L
             </p>
-            <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-cream text-balance">
-              Numbers that show up on the board deck.
+            <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-ink-900 text-balance">
+              Real AI value, not stalled pilots.
             </h2>
           </Reveal>
           <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {STATS.map((s, i) => (
               <Reveal key={i} delay={i * 0.06}>
-                <p className="text-5xl md:text-7xl font-semibold tracking-tighter text-cream">
+                <p className="text-5xl md:text-7xl font-semibold tracking-tighter grad-text-brand">
                   <StatCounter value={s.value} suffix={s.suffix} />
                 </p>
-                <p className="mt-3 text-sm md:text-base text-cream/85 leading-snug font-medium">
+                <p className="mt-3 text-sm md:text-base text-ink-900 leading-snug font-medium">
                   {s.label}
                 </p>
-                <p className="mt-1 text-xs text-cream/45">{s.sub}</p>
+                <p className="mt-1 text-xs text-muted">{s.sub}</p>
               </Reveal>
             ))}
           </div>
@@ -242,9 +272,9 @@ export default function HomePage() {
       <section className="relative py-24 md:py-32 bg-cream-200 border-y border-line">
         <div className="max-w-7xl mx-auto px-6">
           <Reveal className="text-center max-w-3xl mx-auto mb-14">
-            <SectionEyebrow className="justify-center">Voices from the work</SectionEyebrow>
+            <SectionEyebrow className="justify-center">Voices from production</SectionEyebrow>
             <h2 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight text-ink-900 leading-[1.05] text-balance">
-              What operators say after the first quarter.
+              What operators say once the work is live.
             </h2>
           </Reveal>
           <TestimonialGrid />
@@ -266,10 +296,10 @@ export default function HomePage() {
 
       {/* CTA */}
       <CTABanner
-        eyebrow="Begin your AI transformation"
-        title="Let's map your company's next move."
-        body="Book a call with our team. Thirty minutes is enough to know whether RevClerx is the right partner for your moment."
-        primaryLabel="Book a strategy call"
+        eyebrow="Start with a readiness call"
+        title="Find out where AI moves your math."
+        body="Thirty minutes with a senior partner. We will tell you where AI shifts the metric, and where it does not, before you spend a rupee or a dollar on it."
+        primaryLabel="Assess your AI readiness"
         secondaryLabel="See how we work"
         secondaryHref="/how-it-works"
       />

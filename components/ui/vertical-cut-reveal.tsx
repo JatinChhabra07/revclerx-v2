@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 /**
- * VerticalCutReveal — splits a phrase into words and reveals each by
+ * VerticalCutReveal splits a phrase into words and reveals each by
  * sliding from below a clipped line. Great for hero headlines:
  *   <h1><VerticalCutReveal>Build trust at scale</VerticalCutReveal></h1>
  *
@@ -44,7 +44,16 @@ export function VerticalCutReveal({
   return (
     <span ref={ref} className={cn('inline flex-wrap', className)}>
       {words.map((word, i) => (
-        <span key={i} className={cn('inline-flex overflow-hidden', wordClassName)}>
+        <span
+          key={i}
+          className={cn(
+            // pb-[0.2em] reserves room for descenders (p/g/y) so the
+            // overflow-hidden slide-clip box doesn't crop them when the
+            // parent uses tight line-height.
+            'inline-flex overflow-hidden pb-[0.2em] -mb-[0.2em] align-bottom',
+            wordClassName
+          )}
+        >
           <motion.span
             className="inline-block"
             initial={{ y: '100%' }}

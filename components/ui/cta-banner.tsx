@@ -24,10 +24,23 @@ export function CTABanner({
   secondaryHref,
 }: Props) {
   return (
-    <section className="relative overflow-hidden bg-ink-950 text-cream">
-      {/* glows */}
-      <div aria-hidden="true" className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-accent/30 blur-[140px] pointer-events-none" />
-      <div aria-hidden="true" className="absolute -bottom-32 -right-20 w-[420px] h-[420px] rounded-full bg-amber-500/10 blur-[120px] pointer-events-none" />
+    <section className="relative overflow-hidden bg-cream-50 border-t border-line">
+      {/* Soft brand glows */}
+      <div
+        aria-hidden="true"
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-[140px] pointer-events-none"
+        style={{ background: 'rgba(122,43,196,0.18)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-32 -right-20 w-[420px] h-[420px] rounded-full blur-[120px] pointer-events-none"
+        style={{ background: 'rgba(233,30,131,0.14)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-32 -left-20 w-[420px] h-[420px] rounded-full blur-[120px] pointer-events-none"
+        style={{ background: 'rgba(51,64,212,0.14)' }}
+      />
 
       <div className="relative max-w-5xl mx-auto px-6 py-24 md:py-32 text-center">
         <motion.p
@@ -35,7 +48,7 @@ export function CTABanner({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs uppercase tracking-[0.3em] text-cream/55"
+          className="text-xs uppercase tracking-[0.3em] text-muted"
         >
           {eyebrow}
         </motion.p>
@@ -44,7 +57,7 @@ export function CTABanner({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 text-4xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-cream text-balance"
+          className="mt-5 text-4xl md:text-7xl font-semibold tracking-tight leading-[1.05] text-ink-900 text-balance"
         >
           {title}
         </motion.h2>
@@ -54,7 +67,7 @@ export function CTABanner({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-7 max-w-2xl mx-auto text-base md:text-lg text-cream/70 leading-relaxed"
+            className="mt-7 max-w-2xl mx-auto text-base md:text-lg text-body leading-relaxed"
           >
             {body}
           </motion.p>
@@ -66,19 +79,13 @@ export function CTABanner({
           transition={{ duration: 0.5, delay: 0.25 }}
           className="mt-11 flex flex-wrap items-center justify-center gap-3"
         >
-          <Link
-            href={primaryHref}
-            className="inline-flex items-center gap-2 rounded-full bg-cream px-7 py-4 text-sm font-semibold text-ink-900 hover:bg-white transition-all hover:translate-x-1"
-          >
-            <CalendarCheck className="w-4 h-4 text-accent" />
+          <Link href={primaryHref} className="btn-accent">
+            <CalendarCheck className="w-4 h-4" />
             {primaryLabel}
             <ArrowUpRight className="w-4 h-4" />
           </Link>
           {secondaryLabel && secondaryHref && (
-            <Link
-              href={secondaryHref}
-              className="inline-flex items-center gap-2 rounded-full border border-cream/25 bg-cream/5 backdrop-blur px-7 py-4 text-sm font-semibold text-cream hover:bg-cream/10 hover:border-cream/40 transition-all"
-            >
+            <Link href={secondaryHref} className="btn-secondary">
               {secondaryLabel}
             </Link>
           )}

@@ -32,11 +32,20 @@ const config: Config = {
         lineStrong: '#d0ccc1',
         muted: '#6b6457',
         body: '#2a2a2a',
+        // Brand: matches the logo gradient (deep blue → purple → magenta)
+        brand: {
+          blue: '#3340D4',
+          indigo: '#5530CB',
+          purple: '#7A2BC4',
+          magenta: '#C926B8',
+          pink: '#E91E83'
+        },
+        // Accent reads as the primary brand purple, single solid color
         accent: {
-          DEFAULT: '#1f4d3a',
-          hover: '#163829',
-          soft: '#edf3ef',
-          line: '#cfdcd5'
+          DEFAULT: '#7A2BC4',
+          hover: '#5F1FA0',
+          soft: '#F6F0FE',
+          line: '#E2D2F4'
         }
       },
       maxWidth: {
@@ -48,7 +57,8 @@ const config: Config = {
         'shimmer': 'shimmer 2.4s linear infinite',
         'spin-slow': 'spin 22s linear infinite',
         'marquee': 'marquee 38s linear infinite',
-        'pulse-soft': 'pulseSoft 3s ease-in-out infinite'
+        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+        'gradient-x': 'gradientX 8s ease infinite'
       },
       keyframes: {
         floatSlow: {
@@ -66,7 +76,15 @@ const config: Config = {
         pulseSoft: {
           '0%, 100%': { opacity: '0.6' },
           '50%': { opacity: '1' }
+        },
+        gradientX: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' }
         }
+      },
+      backgroundImage: {
+        'brand-gradient': 'linear-gradient(135deg, #3340D4 0%, #7A2BC4 50%, #E91E83 100%)',
+        'brand-gradient-soft': 'linear-gradient(135deg, #3340D4 0%, #7A2BC4 55%, #E91E83 100%)'
       }
     }
   },
